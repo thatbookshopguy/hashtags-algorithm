@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function getHashTag(string) {
+      let filtered = string.replace(/[^A-Za-zА-Яа-я0-9ёЁ ]/g, '').replace('  ', ' ').replace('  ', ' ');
+      console.log(filtered);
+
+      function capitalize(string) {
+        let splitString = string.toLowerCase().split(' ');
+        for (let i = 0; i < splitString.length; i++) {
+          splitString[i] = splitString[i].charAt(0).toUpperCase() + splitString[i].substring(1);
+        }
+
+        return splitString.join('');
+      }
+
+      let capitalized = capitalize(filtered);
+      console.log(capitalized);
+
+      let result = '#' + capitalized;
+      console.log(result);
+
+      if (result.length <= 1 || result == '#') {
+        alert('Длина хештега не может быть равна 0 :(');
+        return false;
+      } else if (result.length > 100) {
+        alert('Длина хештега не может быть больше 100 :(');
+        return false;
+      } else {
+        alert('Ваш хештег: ' + result);
+      }
+    }
+
+    let res = prompt('Введите текст для формирования хештега');
+    getHashTag(res);
+
+  </script>
+</body>
+</html>
